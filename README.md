@@ -1,3 +1,3 @@
-# godot-template
+# ggj-2020
 
-A template for Godot projects.
+Project for Global Game Jam 2020
