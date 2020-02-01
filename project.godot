@@ -13,9 +13,21 @@ _global_script_classes=[ {
 "class": "LevelLoader",
 "language": "GDScript",
 "path": "res://scripts/classes/LevelLoader.gd"
+}, {
+"base": "Node2D",
+"class": "RootShipNode",
+"language": "GDScript",
+"path": "res://scripts/classes/RootShipNode.gd"
+}, {
+"base": "Node2D",
+"class": "ShipNode",
+"language": "GDScript",
+"path": "res://scripts/classes/ShipNode.gd"
 } ]
 _global_script_class_icons={
-"LevelLoader": ""
+"LevelLoader": "",
+"RootShipNode": "",
+"ShipNode": ""
 }
 
 [application]
