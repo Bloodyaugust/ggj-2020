@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Circle2D",
+"language": "GDScript",
+"path": "res://scripts/classes/2DCircle.gd"
+}, {
 "base": "Node",
 "class": "LevelLoader",
 "language": "GDScript",
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://scripts/classes/ShipNode.gd"
 } ]
 _global_script_class_icons={
+"Circle2D": "",
 "LevelLoader": "",
 "RootShipNode": "",
 "ShipNode": ""
