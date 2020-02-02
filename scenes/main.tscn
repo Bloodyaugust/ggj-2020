@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://lib/redux/main.gd" type="Script" id=1]
+[ext_resource path="res://sprites/background/starfield-back-seamless.png" type="Texture" id=2]
 [ext_resource path="res://actors/RootShipNode.tscn" type="PackedScene" id=3]
 [ext_resource path="res://behaviors/PlayerMovement.tscn" type="PackedScene" id=4]
 [ext_resource path="res://actors/weapon-nodes/BasicGunNode.tscn" type="PackedScene" id=5]
 [ext_resource path="res://behaviors/PlayerWeaponControl.tscn" type="PackedScene" id=6]
 [ext_resource path="res://actors/armor-nodes/LightArmorNode.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/enemies/FrigateEnemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/background/clouds-seamless.png" type="Texture" id=9]
 [ext_resource path="res://scripts/behaviors/CameraMouseTarget.gd" type="Script" id=10]
 [ext_resource path="res://sprites/emissive_circle.png" type="Texture" id=11]
 
@@ -31,6 +33,50 @@ max_distance_from_parent = 300.0
 current = true
 process_mode = 0
 smoothing_enabled = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="RootShipNode/CameraMouseTarget/Camera2D"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="RootShipNode/CameraMouseTarget/Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 1414, 1414 )
+
+[node name="Sprite" type="Sprite" parent="RootShipNode/CameraMouseTarget/Camera2D/ParallaxBackground/ParallaxLayer"]
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="RootShipNode/CameraMouseTarget/Camera2D/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 2828, 0 )
+texture = ExtResource( 2 )
+
+[node name="Sprite3" type="Sprite" parent="RootShipNode/CameraMouseTarget/Camera2D/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 2828, 2828 )
+texture = ExtResource( 2 )
+
+[node name="Sprite4" type="Sprite" parent="RootShipNode/CameraMouseTarget/Camera2D/ParallaxBackground/ParallaxLayer"]
+position = Vector2( 0, 2828 )
+texture = ExtResource( 2 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="RootShipNode/CameraMouseTarget/Camera2D/ParallaxBackground"]
+motion_scale = Vector2( 0.7, 0.7 )
+motion_mirroring = Vector2( 1414, 1414 )
+
+[node name="Sprite" type="Sprite" parent="RootShipNode/CameraMouseTarget/Camera2D/ParallaxBackground/ParallaxLayer2"]
+modulate = Color( 0.694118, 0.713726, 0.815686, 0.0980392 )
+texture = ExtResource( 9 )
+
+[node name="Sprite2" type="Sprite" parent="RootShipNode/CameraMouseTarget/Camera2D/ParallaxBackground/ParallaxLayer2"]
+modulate = Color( 0.694118, 0.713726, 0.815686, 0.0980392 )
+position = Vector2( 2828, 0 )
+texture = ExtResource( 9 )
+
+[node name="Sprite3" type="Sprite" parent="RootShipNode/CameraMouseTarget/Camera2D/ParallaxBackground/ParallaxLayer2"]
+modulate = Color( 0.694118, 0.713726, 0.815686, 0.0980392 )
+position = Vector2( 2828, 2828 )
+texture = ExtResource( 9 )
+
+[node name="Sprite4" type="Sprite" parent="RootShipNode/CameraMouseTarget/Camera2D/ParallaxBackground/ParallaxLayer2"]
+modulate = Color( 0.694118, 0.713726, 0.815686, 0.0980392 )
+position = Vector2( 0, 2828 )
+texture = ExtResource( 9 )
 
 [node name="Sprite" type="Sprite" parent="RootShipNode/CameraMouseTarget"]
 texture = ExtResource( 11 )

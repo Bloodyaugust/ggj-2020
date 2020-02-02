@@ -5,6 +5,7 @@ export var damage: float
 export var lifetime: float
 export var speed: float
 
+var starting_velocity: Vector2
 var team: int
 
 var _time_lived: float
@@ -17,7 +18,7 @@ func _on_area_entered(area: Area2D):
     queue_free()
 
 func _physics_process(delta):
-  translate(Vector2(1, 0).rotated(rotation) * speed * delta)
+  translate((Vector2(1, 0).rotated(rotation) * speed * delta) + starting_velocity)
 
 func _process(delta):
   _time_lived += delta

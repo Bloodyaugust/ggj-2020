@@ -36,6 +36,9 @@ var _velocity: Vector2
 func get_class():
   return "RootShipNode"
 
+func get_velocity():
+  return _velocity
+
 func add_connected_node(connecting_node, connecting_node_connections):
   var _node_global_position = connecting_node.global_position
 
