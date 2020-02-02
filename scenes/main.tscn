@@ -1,14 +1,14 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://lib/redux/main.gd" type="Script" id=1]
-[ext_resource path="res://actors/enemies/BasicEnemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://actors/RootShipNode.tscn" type="PackedScene" id=3]
 [ext_resource path="res://behaviors/PlayerMovement.tscn" type="PackedScene" id=4]
 [ext_resource path="res://actors/weapon-nodes/BasicGunNode.tscn" type="PackedScene" id=5]
 [ext_resource path="res://behaviors/PlayerWeaponControl.tscn" type="PackedScene" id=6]
 [ext_resource path="res://actors/armor-nodes/LightArmorNode.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/enemies/FrigateEnemy.tscn" type="PackedScene" id=8]
-[ext_resource path="res://actors/enemies/ChainGunEnemy.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scripts/behaviors/CameraMouseTarget.gd" type="Script" id=10]
+[ext_resource path="res://sprites/emissive_circle.png" type="Texture" id=11]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,8 +23,17 @@ team = 1
 
 [node name="PlayerWeaponControl" parent="RootShipNode" instance=ExtResource( 6 )]
 
-[node name="Camera2D" type="Camera2D" parent="RootShipNode"]
+[node name="CameraMouseTarget" type="Node2D" parent="RootShipNode"]
+script = ExtResource( 10 )
+max_distance_from_parent = 300.0
+
+[node name="Camera2D" type="Camera2D" parent="RootShipNode/CameraMouseTarget"]
 current = true
+process_mode = 0
+smoothing_enabled = true
+
+[node name="Sprite" type="Sprite" parent="RootShipNode/CameraMouseTarget"]
+texture = ExtResource( 11 )
 
 [node name="BasicGunNode" parent="RootShipNode" instance=ExtResource( 5 )]
 position = Vector2( -0.867004, 26.317 )
@@ -41,10 +50,5 @@ position = Vector2( 39.133, 44.317 )
 [node name="ShipNode3" parent="RootShipNode" instance=ExtResource( 7 )]
 position = Vector2( 39.133, -51.683 )
 
-[node name="BasicEnemy" parent="." instance=ExtResource( 2 )]
-
-[node name="ChainGunEnemy" parent="." instance=ExtResource( 9 )]
-position = Vector2( 464, 113 )
-
 [node name="FrigateEnemy" parent="." instance=ExtResource( 8 )]
-position = Vector2( 19.0055, 529.914 )
+position = Vector2( 103.216, 351.521 )
