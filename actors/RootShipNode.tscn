@@ -8,6 +8,7 @@
 extents = Vector2( 21.2754, 20.5122 )
 
 [node name="RootShipNode" type="Node2D" groups=[
+"RootShipNodes",
 "ShipNodes",
 ]]
 z_index = 1

@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 20.8927, 20.8243 )
 
-[node name="ShipNode" type="Node2D" groups=[
+[node name="BasicGunNode" type="Node2D" groups=[
 "ShipNodes",
 ]]
 z_as_relative = false

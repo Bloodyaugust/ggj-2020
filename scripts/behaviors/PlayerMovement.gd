@@ -14,7 +14,7 @@ func _physics_process(delta):
 
   var _queued_acceleration = Vector2(
     -Input.get_action_strength("player_move_left") + Input.get_action_strength("player_move_right"),
-    Input.get_action_strength("player_move_down") + -Input.get_action_strength("player_move_up"))
+    Input.get_action_strength("player_move_down") + -Input.get_action_strength("player_move_up")).normalized()
 
   var _queued_angular_acceleration = 0
 
