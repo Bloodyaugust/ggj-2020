@@ -4,12 +4,13 @@ enum AI_STATES {IDLE, ATTACKING}
 
 export var attack_range: float
 export var move_range: float
+export var team: int
 
 onready var tree := get_tree()
 onready var root := tree.get_root()
 
 onready var _parent: RootShipNode = get_parent()
-onready var _player: RootShipNode = tree.get_nodes_in_group("Player")[0]
+onready var _player: RootShipNode = tree.get_nodes_in_group("Player")[0] if tree.get_nodes_in_group("Player").size() > 0 else null
 
 var _ai_state: int
 
@@ -19,7 +20,7 @@ func short_angle_dist(from, to):
   return fmod(2 * _difference, _max_angle) - _difference
 
 func _process(_delta):
-  if _parent.global_position.distance_to(_player.global_position) <= attack_range:
+  if is_instance_valid(_player) && _parent.global_position.distance_to(_player.global_position) <= attack_range:
     _ai_state = AI_STATES.ATTACKING
   else:
     _ai_state = AI_STATES.IDLE
@@ -43,3 +44,6 @@ func _process(_delta):
 
     _parent.queue_acceleration(_queued_acceleration)
     _parent.queue_angular_acceleration(_queued_angular_acceleration)
+
+func _ready():
+  _parent.team = team
