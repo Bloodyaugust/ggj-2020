@@ -10,6 +10,7 @@ signal node_destroyed
 export var connection_range: float
 export var health: float
 
+onready var explosion_particle_system := preload("res://doodads/ExplosionEffect.tscn")
 onready var tree := get_tree()
 onready var root := tree.get_root()
 onready var instance_id = get_instance_id()
@@ -77,8 +78,14 @@ func _on_node_find_connections():
 
 func _process(_delta):
   if _current_health <= 0 && node_state != NODE_STATES.DESTROYED:
+    var _explosion_scene = explosion_particle_system.instance()
+
     node_state = NODE_STATES.DESTROYED
     emit_signal("node_destroyed", self)
+
+    _explosion_scene.global_position = global_position
+    root.add_child(_explosion_scene)
+
     queue_free()
 
   if node_state == NODE_STATES.DISCONNECTED:
