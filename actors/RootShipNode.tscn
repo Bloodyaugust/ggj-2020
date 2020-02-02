@@ -10,7 +10,14 @@ extents = Vector2( 21.2754, 20.5122 )
 [node name="RootShipNode" type="Node2D" groups=[
 "ShipNodes",
 ]]
+rotation = 1.5708
 script = ExtResource( 2 )
+angular_friction = 3.0
+base_acceleration = 5.0
+friction = 3.0
+base_angular_acceleration = 5.0
+max_angular_velocity = 5.0
+max_velocity = 10.0
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -21,4 +28,5 @@ shape = SubResource( 1 )
 texture = ExtResource( 3 )
 
 [node name="Sprite2" type="Sprite" parent="Area2D"]
+position = Vector2( 0, -13 )
 texture = ExtResource( 1 )
