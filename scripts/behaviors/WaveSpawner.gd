@@ -29,17 +29,14 @@ func _process(delta):
     _time_to_spawn -= delta
 
     if _time_to_spawn <= 0:
-      print("spawning")
       _wave_state = WAVE_STATES.SPAWNING
 
   if _wave_state == WAVE_STATES.SPAWNING:
-    print("inside spawning")
     _current_wave += 1
 
     var _wave_key = str(_current_wave)
     for _enemy_scene in waves[_wave_key]:
       var _new_enemy = _enemy_scene.instance()
-      print("spawning new enemy")
 
       root.add_child(_new_enemy)
       _new_enemy.global_position = _player.global_position + (Vector2(rand_range(-1, 1), rand_range(-1, 1)).normalized() * spawn_distance)
@@ -52,7 +49,6 @@ func _ready():
     _player_team = _player.team
 
   if is_instance_valid(_player):
-    print("spawning first wave")
     call_deferred("_spawn_first_wave")
 
   store.connect("ship_destroyed", self, "_on_ship_destroyed")

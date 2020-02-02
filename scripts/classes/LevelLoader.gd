@@ -46,7 +46,6 @@ func _is_actors_exhausted():
   return false
 
 func _initialize_wave():
-  print("Initializing wave: " + str(current_wave_index))
   current_wave = waves[current_wave_index]
 
   for i in range(0, current_wave['actors'].size()):
