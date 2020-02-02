@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://sprites/spaceBuilding_001.png" type="Texture" id=1]
+[ext_resource path="res://sprites/node_base.png" type="Texture" id=1]
 [ext_resource path="res://scripts/classes/ShipNode.gd" type="Script" id=2]
 [ext_resource path="res://scripts/classes/2DCircle.gd" type="Script" id=3]
 [ext_resource path="res://actors/weapons/BasicGun.tscn" type="PackedScene" id=4]

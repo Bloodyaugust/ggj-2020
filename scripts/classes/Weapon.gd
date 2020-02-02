@@ -24,7 +24,7 @@ func get_class():
   return "Weapon"
 
 func fire():
-  if _weapon_state == WEAPON_STATES.IDLE:
+  if _weapon_state == WEAPON_STATES.IDLE && is_instance_valid(root_ship_node):
     var _new_projectile = projectile.instance()
 
     _new_projectile.global_position = global_position
