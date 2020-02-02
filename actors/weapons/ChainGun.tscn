@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scripts/classes/Weapon.gd" type="Script" id=1]
-[ext_resource path="res://sprites/spaceParts_046.png" type="Texture" id=2]
+[ext_resource path="res://sprites/spaceParts_046_vz.png" type="Texture" id=2]
 [ext_resource path="res://actors/projectiles/BasicBullet.tscn" type="PackedScene" id=3]
 
 [node name="ChainGun" type="Node2D"]
