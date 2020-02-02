@@ -5,9 +5,10 @@
 [ext_resource path="res://actors/weapon-nodes/BasicGunNode.tscn" type="PackedScene" id=3]
 
 [node name="EasyEnemy" type="Node2D"]
-position = Vector2( 284, 226 )
 
-[node name="RootShipNode2" parent="." instance=ExtResource( 2 )]
+[node name="RootShipNode2" parent="." groups=[
+"Enemies",
+] instance=ExtResource( 2 )]
 health = 10.0
 team = 1
 

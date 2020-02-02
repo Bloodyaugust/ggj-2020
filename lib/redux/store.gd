@@ -7,6 +7,7 @@ var _state = {
  }
 var _reducers = {}
 
+signal ship_destroyed
 signal state_changed(name, state)
 
 func create(reducers, callbacks = null):

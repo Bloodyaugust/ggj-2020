@@ -81,12 +81,15 @@ func _on_node_destroyed(_node):
   navigation_map.remove_point(_node.instance_id)
 
   for _node_key in node_connections.keys():
-    var _current_node = connected_nodes[_node_key]
+    var _current_node = is_instance_valid(connected_nodes[_node_key])
 
-    node_connections[_node_key].erase(_node)
+    if _current_node:
+      _current_node = connected_nodes[_node_key]
 
-    if navigation_map.get_id_path(_current_node.instance_id, instance_id).size() == 0:
-      _current_node.disconnect_node()
+      node_connections[_node_key].erase(_node)
+
+      if navigation_map.get_id_path(_current_node.instance_id, instance_id).size() == 0:
+        _current_node.disconnect_node()
   
   _process_disconnected_nodes()
 
@@ -117,6 +120,7 @@ func _process(delta):
       root.add_child(_node)
       _node.disconnect_node()
 
+    store.emit_signal("ship_destroyed", team)
     queue_free()
 
 func _process_disconnected_nodes():

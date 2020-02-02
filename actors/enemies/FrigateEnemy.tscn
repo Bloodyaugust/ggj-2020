@@ -8,9 +8,10 @@
 [ext_resource path="res://actors/weapon-nodes/MortarNode.tscn" type="PackedScene" id=6]
 
 [node name="FrigateEnemy" type="Node2D"]
-position = Vector2( 284, 226 )
 
-[node name="RootShipNode2" parent="." instance=ExtResource( 2 )]
+[node name="RootShipNode2" parent="." groups=[
+"Enemies",
+] instance=ExtResource( 2 )]
 angular_friction = 8.0
 base_acceleration = 2.0
 base_angular_acceleration = 0.2

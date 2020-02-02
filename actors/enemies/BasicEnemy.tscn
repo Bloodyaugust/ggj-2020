@@ -6,9 +6,10 @@
 [ext_resource path="res://actors/armor-nodes/LightArmorNode.tscn" type="PackedScene" id=4]
 
 [node name="BasicEnemy" type="Node2D"]
-position = Vector2( 284, 226 )
 
-[node name="RootShipNode2" parent="." instance=ExtResource( 2 )]
+[node name="RootShipNode2" parent="." groups=[
+"Enemies",
+] instance=ExtResource( 2 )]
 health = 10.0
 team = 1
 
