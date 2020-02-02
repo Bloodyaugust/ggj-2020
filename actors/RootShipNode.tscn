@@ -15,10 +15,15 @@ z_as_relative = false
 script = ExtResource( 2 )
 angular_friction = 3.0
 base_acceleration = 5.0
-friction = 3.0
 base_angular_acceleration = 5.0
+friction = 3.0
+health = 100.0
 max_angular_velocity = 5.0
 max_velocity = 10.0
+max_angular_acceleration = 1.0
+max_acceleration = 10.0
+min_angular_acceleration = 0.01
+min_acceleration = 0.1
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
@@ -31,5 +36,5 @@ shape = SubResource( 1 )
 texture = ExtResource( 3 )
 
 [node name="Sprite2" type="Sprite" parent="Area2D"]
-position = Vector2( 0, -13 )
+position = Vector2( 20, 0 )
 texture = ExtResource( 1 )

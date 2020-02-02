@@ -7,10 +7,15 @@ signal weapon_set_look
 
 export var angular_friction: float
 export var base_acceleration: float
-export var friction: float
 export var base_angular_acceleration: float
+export var friction: float
+export var health: float
 export var max_angular_velocity: float
 export var max_velocity: float
+export var max_angular_acceleration: float
+export var max_acceleration: float
+export var min_angular_acceleration: float
+export var min_acceleration: float
 export var team: int
 
 onready var tree := get_tree()
@@ -23,6 +28,7 @@ var node_connections := {} # Dictionary of arrays, single node to many
 
 var _angular_velocity: float
 var _area2d: Area2D
+var _current_health: float
 var _queued_acceleration: Vector2
 var _queued_angular_acceleration: float
 var _velocity: Vector2
@@ -50,8 +56,13 @@ func add_connected_node(connecting_node, connecting_node_connections):
 
   emit_signal("node_find_connections")
 
+func do_damage(amount):
+  _current_health -= amount
+
 func queue_acceleration(amount: Vector2):
-  _queued_acceleration += amount.rotated(rotation) * base_acceleration
+  var _acceleration = amount.rotated(global_rotation + (PI / 2)) * base_acceleration
+
+  _queued_acceleration += _acceleration.clamped(max_acceleration)
 
 func queue_angular_acceleration(amount: float):
   _queued_angular_acceleration += amount * base_angular_acceleration
@@ -78,6 +89,9 @@ func _on_node_destroyed(_node):
 
 func _physics_process(delta):
   rotation += clamp(_queued_angular_acceleration * delta, -max_angular_velocity, max_angular_velocity)
+  rotation = fmod(rotation, (2 * PI))
+  if rotation < 0:
+    rotation += 2 * PI
 
   if _queued_acceleration.length() < 1:
     _velocity += _velocity * -1 * friction * delta
@@ -89,6 +103,18 @@ func _physics_process(delta):
   _queued_acceleration = Vector2(0, 0)
 
   position += _velocity
+
+func _process(delta):
+  if _current_health <= 0:
+    for _node in connected_nodes.values():
+      var _current_global_position = _node.global_position
+
+      remove_child(_node)
+      _node.global_position = _current_global_position
+      root.add_child(_node)
+      _node.disconnect_node()
+
+    queue_free()
 
 func _process_disconnected_nodes():
   var _disconnected_node_ids = []
@@ -111,6 +137,7 @@ func _process_disconnected_nodes():
 func _ready():
   navigation_map.add_point(instance_id, Vector2(0, 0))
   _area2d = $Area2D
+  _current_health = health
 
   _set_team(team)
   

@@ -13,7 +13,7 @@ extents = Vector2( 20.8927, 20.8243 )
 ]]
 z_as_relative = false
 script = ExtResource( 2 )
-connection_range = 50.0
+connection_range = 40.0
 health = 10.0
 
 [node name="BasicGun" parent="." instance=ExtResource( 4 )]
@@ -33,5 +33,5 @@ process_priority = 999999
 script = ExtResource( 3 )
 angle_to = 360.0
 color = Color( 0.121569, 0.145098, 0.709804, 1 )
-radius = 50.0
+radius = 40.0
 resolution = 8

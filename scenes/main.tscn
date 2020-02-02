@@ -36,4 +36,29 @@ position = Vector2( 514.801, 318.645 )
 
 [node name="ShipNode" parent="." instance=ExtResource( 5 )]
 position = Vector2( 515.545, 277.173 )
+
+[node name="ShipNode5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 322, 221 )
+
+[node name="ShipNode6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 679, 185 )
+rotation = -1.39626
+
+[node name="ShipNode7" parent="." instance=ExtResource( 5 )]
+position = Vector2( 660, 325 )
+
+[node name="ShipNode8" parent="." instance=ExtResource( 5 )]
+position = Vector2( 333, 363 )
+
+[node name="RootShipNode2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 191, 20 )
+
+[node name="ShipNode" parent="RootShipNode2" instance=ExtResource( 5 )]
+position = Vector2( -26, 22 )
+
+[node name="ShipNode2" parent="RootShipNode2" instance=ExtResource( 5 )]
+position = Vector2( 10, 24 )
+
+[node name="ShipNode3" parent="RootShipNode2" instance=ExtResource( 5 )]
+position = Vector2( 32, 3 )
 [connection signal="timeout" from="ShipNode3/Timer" to="ShipNode3" method="do_damage" binds= [ 10.0 ]]

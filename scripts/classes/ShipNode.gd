@@ -19,6 +19,7 @@ var root_ship_node: RootShipNode
 var team: int
 
 var _area2d: Area2D
+var _circle2d: Circle2D
 var _current_health: float
 
 func get_class():
@@ -27,6 +28,7 @@ func get_class():
 func disconnect_node():
   node_state = NODE_STATES.DISCONNECTED
   root_ship_node = null
+  _circle2d.enabled = true
   emit_signal("node_disconnected")
 
 func do_damage(amount):
@@ -52,6 +54,7 @@ func _connect_nodes():
   if is_instance_valid(root_ship_node):
     _set_team(root_ship_node.team)
     node_state = NODE_STATES.CONNECTED
+    _circle2d.enabled = false
     emit_signal("node_connected")
 
     if _already_connected_to_root:
@@ -88,8 +91,15 @@ func _ready():
 
   call_deferred("_connect_nodes")
   _area2d = $Area2D
+  _circle2d = $Circle2D
+
+  _circle2d.enabled = true
 
 func _set_team(new_team: int):
+  _area2d.set_collision_layer_bit(team, false)
+  _area2d.set_collision_mask_bit(team, true)
+
   team = new_team
+
   _area2d.set_collision_layer_bit(team, true)
   _area2d.set_collision_mask_bit(team, false)

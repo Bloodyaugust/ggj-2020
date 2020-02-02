@@ -28,7 +28,7 @@ func fire():
     var _new_projectile = projectile.instance()
 
     _new_projectile.global_position = global_position
-    _new_projectile.rotation = rotation
+    _new_projectile.rotation = global_rotation
     _new_projectile.team = team
     root.add_child(_new_projectile)
     
