@@ -16,7 +16,6 @@
 "Player",
 ] instance=ExtResource( 5 )]
 position = Vector2( 480.867, 301.683 )
-health = 2.0
 team = 1
 
 [node name="PlayerMovement" parent="RootShipNode" instance=ExtResource( 4 )]
