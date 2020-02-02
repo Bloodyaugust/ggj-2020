@@ -2,6 +2,8 @@ extends Node2D
 class_name RootShipNode
 
 signal node_find_connections
+signal weapon_fire
+signal weapon_set_look
 
 export var angular_friction: float
 export var base_acceleration: float
@@ -9,6 +11,7 @@ export var friction: float
 export var base_angular_acceleration: float
 export var max_angular_velocity: float
 export var max_velocity: float
+export var team: int
 
 onready var tree := get_tree()
 onready var root := tree.get_root()
@@ -19,6 +22,7 @@ var connected_nodes := {} # References to nodes connected to me
 var node_connections := {} # Dictionary of arrays, single node to many
 
 var _angular_velocity: float
+var _area2d: Area2D
 var _queued_acceleration: Vector2
 var _queued_angular_acceleration: float
 var _velocity: Vector2
@@ -42,6 +46,7 @@ func add_connected_node(connecting_node, connecting_node_connections):
 
   add_child(connecting_node)
   connecting_node.global_position = _node_global_position
+  connecting_node.rotation = 0
 
   emit_signal("node_find_connections")
 
@@ -105,3 +110,11 @@ func _process_disconnected_nodes():
 
 func _ready():
   navigation_map.add_point(instance_id, Vector2(0, 0))
+  _area2d = $Area2D
+
+  _set_team(team)
+  
+func _set_team(new_team: int):
+  team = new_team
+  _area2d.set_collision_layer_bit(team, true)
+  _area2d.set_collision_mask_bit(team, false)

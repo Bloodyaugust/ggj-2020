@@ -3,6 +3,7 @@ class_name ShipNode
 
 enum NODE_STATES {CONNECTED, DISCONNECTED, DESTROYED}
 
+signal node_connected
 signal node_disconnected
 signal node_destroyed
 
@@ -15,7 +16,9 @@ onready var instance_id = get_instance_id()
 
 var node_state: int
 var root_ship_node: RootShipNode
+var team: int
 
+var _area2d: Area2D
 var _current_health: float
 
 func get_class():
@@ -47,7 +50,9 @@ func _connect_nodes():
         _connecting_nodes.append(_node)
 
   if is_instance_valid(root_ship_node):
+    _set_team(root_ship_node.team)
     node_state = NODE_STATES.CONNECTED
+    emit_signal("node_connected")
 
     if _already_connected_to_root:
       root_ship_node.update_connected_node(self, _connecting_nodes)
@@ -82,3 +87,9 @@ func _ready():
   _current_health = health
 
   call_deferred("_connect_nodes")
+  _area2d = $Area2D
+
+func _set_team(new_team: int):
+  team = new_team
+  _area2d.set_collision_layer_bit(team, true)
+  _area2d.set_collision_mask_bit(team, false)

@@ -10,7 +10,8 @@ extents = Vector2( 21.2754, 20.5122 )
 [node name="RootShipNode" type="Node2D" groups=[
 "ShipNodes",
 ]]
-rotation = 1.5708
+z_index = 1
+z_as_relative = false
 script = ExtResource( 2 )
 angular_friction = 3.0
 base_acceleration = 5.0
@@ -20,6 +21,8 @@ max_angular_velocity = 5.0
 max_velocity = 10.0
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 1023
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
