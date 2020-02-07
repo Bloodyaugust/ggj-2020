@@ -64,6 +64,7 @@ func _connect_nodes():
       root_ship_node.add_connected_node(self, _connecting_nodes)
 
     root_ship_node.connect("node_find_connections", self, "_on_node_find_connections")
+    root_ship_node.connect("root_ship_node_team_set", self, "_on_root_ship_node_team_set")
 
 func _on_node_destroyed(_destroyed_node):
   # find if we have connection to heart node
@@ -75,6 +76,9 @@ func _on_node_disconnected(_disconnected_node):
 
 func _on_node_find_connections():
   _connect_nodes()
+
+func _on_root_ship_node_team_set():
+  _set_team(root_ship_node.team)
 
 func _process(_delta):
   if _current_health <= 0 && node_state != NODE_STATES.DESTROYED:

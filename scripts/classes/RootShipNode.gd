@@ -2,6 +2,8 @@ extends Node2D
 class_name RootShipNode
 
 signal node_find_connections
+signal root_ship_node_destroyed
+signal root_ship_node_team_set
 signal weapon_fire
 signal weapon_set_look
 
@@ -25,6 +27,8 @@ onready var navigation_map = AStar2D.new()
 
 var connected_nodes := {} # References to nodes connected to me
 var node_connections := {} # Dictionary of arrays, single node to many
+
+onready var _parent := get_parent()
 
 var _angular_velocity: float
 var _area2d: Area2D
@@ -81,7 +85,10 @@ func _on_node_destroyed(_node):
   navigation_map.remove_point(_node.instance_id)
 
   for _node_key in node_connections.keys():
-    var _current_node = is_instance_valid(connected_nodes[_node_key])
+    var _current_node
+
+    if connected_nodes.get(_node_key):
+      _current_node = is_instance_valid(connected_nodes[_node_key])
 
     if _current_node:
       _current_node = connected_nodes[_node_key]
@@ -122,6 +129,7 @@ func _process(delta):
 
     store.emit_signal("ship_destroyed", team)
     queue_free()
+    emit_signal("root_ship_node_destroyed")
 
 func _process_disconnected_nodes():
   var _disconnected_node_ids = []
@@ -146,9 +154,13 @@ func _ready():
   _area2d = $Area2D
   _current_health = health
 
-  _set_team(team)
+  if _parent.get("team"):
+    _set_team(_parent.team)
+  else:
+    _set_team(team)
   
 func _set_team(new_team: int):
   team = new_team
   _area2d.set_collision_layer_bit(team, true)
   _area2d.set_collision_mask_bit(team, false)
+  emit_signal("root_ship_node_team_set")
