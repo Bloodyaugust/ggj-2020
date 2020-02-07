@@ -91,5 +91,5 @@ position = Vector2( 42.133, -4.68301 )
 [node name="ShipNode2" parent="RootShipNode" instance=ExtResource( 8 )]
 position = Vector2( 39.133, 44.317 )
 
-[node name="ShipNode3" parent="RootShipNode" instance=ExtResource( 8 )]
-position = Vector2( 39.133, -51.683 )
+[node name="LightArmorNode" parent="RootShipNode" instance=ExtResource( 8 )]
+position = Vector2( 40.5081, -52.3342 )

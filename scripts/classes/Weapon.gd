@@ -75,3 +75,4 @@ func _ready():
   _weapon_state = WEAPON_STATES.IDLE
 
   parent.connect("node_connected", self, "_on_node_connected")
+  parent.connect("node_disconnected", self, "_on_node_disconnected")

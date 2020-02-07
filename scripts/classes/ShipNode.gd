@@ -28,6 +28,7 @@ func get_class():
 
 func disconnect_node():
   node_state = NODE_STATES.DISCONNECTED
+  root_ship_node.disconnect("root_ship_node_team_set", self, "_on_root_ship_node_team_set")
   root_ship_node = null
   _circle2d.enabled = true
   emit_signal("node_disconnected")
@@ -35,47 +36,32 @@ func disconnect_node():
 func do_damage(amount):
   _current_health -= amount
 
-func _connect_nodes():
-  var _nodes = tree.get_nodes_in_group("ShipNodes")
-  var _connecting_nodes := []
-  var _already_connected_to_root: bool = is_instance_valid(root_ship_node)
+func _connect_node(connecting_to):
+  root_ship_node.add_connected_node(self, connecting_to)
+  emit_signal("node_connected")
 
-  for _node in _nodes:
-    if _node.global_position.distance_to(global_position) <= connection_range && _node != self:
-      if _node.get_class() == "ShipNode" && _node.node_state != NODE_STATES.DESTROYED:
-        if !is_instance_valid(root_ship_node) && is_instance_valid(_node.root_ship_node):
-          root_ship_node = _node.root_ship_node
+func _on_area_entered(entering_area: Area2D):
+  if node_state == NODE_STATES.DISCONNECTED:
+    var _entering_ship_node = entering_area.get_parent()
+    var _connected = false
 
-        _connecting_nodes.append(_node)
+    if _entering_ship_node.get_class() == "RootShipNode":
+      root_ship_node = _entering_ship_node
+      _connected = true
 
-      if _node.get_class() == "RootShipNode":
-        root_ship_node = _node
-        _connecting_nodes.append(_node)
+    if _entering_ship_node.get_class() == "ShipNode" && _entering_ship_node.node_state != NODE_STATES.DESTROYED && _entering_ship_node.node_state != NODE_STATES.DISCONNECTED:
+      root_ship_node = _entering_ship_node.root_ship_node
+      _connected = true
 
-  if is_instance_valid(root_ship_node):
-    _set_team(root_ship_node.team)
-    node_state = NODE_STATES.CONNECTED
-    _circle2d.enabled = false
-    emit_signal("node_connected")
+    if _connected:
+      _set_team(root_ship_node.team)
+      _circle2d.enabled = false
+      node_state = NODE_STATES.CONNECTED
 
-    if _already_connected_to_root:
-      root_ship_node.update_connected_node(self, _connecting_nodes)
-    else:
-      root_ship_node.add_connected_node(self, _connecting_nodes)
+      root_ship_node.connect("root_ship_node_team_set", self, "_on_root_ship_node_team_set")
 
-    root_ship_node.connect("node_find_connections", self, "_on_node_find_connections")
-    root_ship_node.connect("root_ship_node_team_set", self, "_on_root_ship_node_team_set")
+      call_deferred("_connect_node", _entering_ship_node)
 
-func _on_node_destroyed(_destroyed_node):
-  # find if we have connection to heart node
-  pass
-
-func _on_node_disconnected(_disconnected_node):
-  # find if we have connection to heart node
-  pass
-
-func _on_node_find_connections():
-  _connect_nodes()
 
 func _on_root_ship_node_team_set():
   _set_team(root_ship_node.team)
@@ -92,19 +78,16 @@ func _process(_delta):
 
     queue_free()
 
-  if node_state == NODE_STATES.DISCONNECTED:
-    _connect_nodes()
-
 func _ready():
   node_state = NODE_STATES.DISCONNECTED
 
   _current_health = health
-
-  call_deferred("_connect_nodes")
   _area2d = $Area2D
   _circle2d = $Circle2D
 
   _circle2d.enabled = true
+
+  _area2d.connect("area_entered", self, "_on_area_entered")
 
 func _set_team(new_team: int):
   _area2d.set_collision_layer_bit(team, false)

@@ -7,7 +7,7 @@ func short_angle_dist(from, to):
   var _difference = fmod(to - from, _max_angle)
   return fmod(2 * _difference, _max_angle) - _difference
 
-func _physics_process(delta):
+func _physics_process(_delta):
   var _global_mouse_position = _parent.get_global_mouse_position()
   var _rotation = _parent.global_rotation
   var _target_rotation = _parent.global_position.angle_to_point(_global_mouse_position) + PI
