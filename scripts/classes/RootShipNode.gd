@@ -60,8 +60,13 @@ func add_connected_node(connecting_node, new_connection):
 func do_damage(amount):
   _current_health -= amount
 
-func queue_acceleration(amount: Vector2):
-  var _acceleration = amount.rotated(global_rotation + (PI / 2)) * base_acceleration
+func queue_acceleration(amount: Vector2, rotate_to_facing: bool):
+  var _acceleration: Vector2
+
+  if rotate_to_facing:
+    _acceleration = amount.rotated(global_rotation + (PI / 2)) * base_acceleration
+  else:
+    _acceleration = amount * base_acceleration
 
   _queued_acceleration += _acceleration.clamped(max_acceleration)
 

@@ -13,7 +13,9 @@ func _physics_process(_delta):
   var _target_rotation = _parent.global_position.angle_to_point(_global_mouse_position) + PI
 
   var _queued_acceleration = Vector2(
-    -Input.get_action_strength("player_move_left") + Input.get_action_strength("player_move_right"),
+    -Input.get_action_strength("player_move_left") + Input.get_action_strength("player_move_right"), 0).normalized()
+
+  var _queued_rotated_acceleration = Vector2(0,
     Input.get_action_strength("player_move_down") + -Input.get_action_strength("player_move_up")).normalized()
 
   var _queued_angular_acceleration = 0
@@ -23,5 +25,6 @@ func _physics_process(_delta):
   else:
     _queued_angular_acceleration = -lerp(0, 1, clamp(abs(short_angle_dist(_rotation, _target_rotation)) / (PI / 4), 0, 1))
 
-  _parent.queue_acceleration(_queued_acceleration)
+  _parent.queue_acceleration(_queued_acceleration, false)
+  _parent.queue_acceleration(_queued_rotated_acceleration, true)
   _parent.queue_angular_acceleration(_queued_angular_acceleration)

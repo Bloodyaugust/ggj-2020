@@ -58,7 +58,7 @@ func _process(_delta):
     else:
       _queued_angular_acceleration = -lerp(0, 1, clamp(abs(short_angle_dist(_rotation, _target_rotation)) / (PI / 4), 0, 1))
 
-    _parent.queue_acceleration(_queued_acceleration)
+    _parent.queue_acceleration(_queued_acceleration, true)
     _parent.queue_angular_acceleration(_queued_angular_acceleration)
 
   if _ai_state == AI_STATES.IDLE && !_target:
