@@ -24,13 +24,14 @@ max_angular_acceleration = 1.0
 max_acceleration = 10.0
 min_angular_acceleration = 0.01
 min_acceleration = 0.1
+team = 1
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 1023
+collision_mask = 1022
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )

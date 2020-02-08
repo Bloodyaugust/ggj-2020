@@ -20,7 +20,7 @@ health = 25.0
 max_angular_velocity = 0.8
 max_velocity = 2.0
 max_acceleration = 2.0
-team = 1
+team = 2
 
 [node name="AIControl" parent="RootShipNode2" instance=ExtResource( 1 )]
 

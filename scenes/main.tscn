@@ -22,3 +22,6 @@ waves = {
 }
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="BasicEnemy" parent="." instance=ExtResource( 8 )]
+position = Vector2( 228.113, 309.763 )

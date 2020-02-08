@@ -26,12 +26,10 @@ func _find_target():
     if _ship.team != team && !_ship.is_queued_for_deletion():
       _target = _ship
       _target.connect("root_ship_node_destroyed", self, "_on_root_ship_node_destroyed")
-      print("target found")
       break
 
 func _on_root_ship_node_destroyed():
   _target = null
-  print("target destroyed")
   _find_target()
 
 func _on_root_ship_node_team_set():
@@ -67,6 +65,6 @@ func _process(_delta):
     _find_target()
 
 func _ready():
-  _parent.team = team
+  team = _parent.team
 
   _parent.connect("root_ship_node_team_set", self, "_on_root_ship_node_team_set")

@@ -10,7 +10,7 @@
 "Enemies",
 ] instance=ExtResource( 2 )]
 health = 10.0
-team = 1
+team = 2
 
 [node name="AIControl" parent="RootShipNode2" instance=ExtResource( 1 )]
 

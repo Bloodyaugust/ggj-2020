@@ -13,7 +13,7 @@ var _time_lived: float
 func _on_area_entered(area: Area2D):
   var _area_parent = area.get_parent()
 
-  if _area_parent.has_method("do_damage"):
+  if _area_parent.has_method("do_damage") && _area_parent.team != team  && _area_parent.team != 0:
     _area_parent.do_damage(damage)
     queue_free()
 

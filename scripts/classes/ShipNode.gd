@@ -31,6 +31,7 @@ func disconnect_node():
   root_ship_node.disconnect("root_ship_node_team_set", self, "_on_root_ship_node_team_set")
   root_ship_node = null
   _circle2d.enabled = true
+  _set_team(0)
   emit_signal("node_disconnected")
 
 func do_damage(amount):
