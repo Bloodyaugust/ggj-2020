@@ -16,7 +16,6 @@
 "Player",
 ] instance=ExtResource( 5 )]
 position = Vector2( 480.867, 301.683 )
-team = 1
 
 [node name="PlayerMovement" parent="RootShipNode" instance=ExtResource( 4 )]
 
@@ -80,16 +79,16 @@ scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 3 )
 
 [node name="BasicGunNode" parent="RootShipNode" instance=ExtResource( 7 )]
-position = Vector2( -0.867004, 26.317 )
+position = Vector2( -1.19183, 28.2659 )
 
 [node name="BasicGunNode2" parent="RootShipNode" instance=ExtResource( 7 )]
-position = Vector2( -0.867004, -30.683 )
+position = Vector2( -0.0549312, -28.5717 )
 
 [node name="ShipNode" parent="RootShipNode" instance=ExtResource( 8 )]
-position = Vector2( 42.133, -4.68301 )
+position = Vector2( 30.9266, -1.27237 )
 
 [node name="ShipNode2" parent="RootShipNode" instance=ExtResource( 8 )]
-position = Vector2( 39.133, 44.317 )
+position = Vector2( 32.799, 30.8369 )
 
 [node name="LightArmorNode" parent="RootShipNode" instance=ExtResource( 8 )]
-position = Vector2( 40.5081, -52.3342 )
+position = Vector2( 33.0372, -36.0931 )

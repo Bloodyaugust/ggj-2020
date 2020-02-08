@@ -6,7 +6,7 @@
 [ext_resource path="res://actors/weapons/ChainGun.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 20.8927, 20.8243 )
+extents = Vector2( 15.417, 14.6796 )
 
 [node name="ChainGunNode" type="Node2D" groups=[
 "ShipNodes",

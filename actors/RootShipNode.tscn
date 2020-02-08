@@ -4,7 +4,7 @@
 [ext_resource path="res://scripts/classes/RootShipNode.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 21.2754, 20.5122 )
+extents = Vector2( 16.2047, 15.5674 )
 
 [node name="RootShipNode" type="Node2D" groups=[
 "RootShipNodes",

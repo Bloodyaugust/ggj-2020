@@ -15,7 +15,7 @@ team = 2
 [node name="AIControl" parent="RootShipNode2" instance=ExtResource( 1 )]
 
 [node name="BasicGunNode" parent="RootShipNode2" instance=ExtResource( 3 )]
-position = Vector2( 1, 31 )
+position = Vector2( -0.373413, 26.3304 )
 
 [node name="BasicGunNode2" parent="RootShipNode2" instance=ExtResource( 3 )]
-position = Vector2( 1, -29 )
+position = Vector2( 1, -24.605 )

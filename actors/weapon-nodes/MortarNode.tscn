@@ -6,7 +6,7 @@
 [ext_resource path="res://actors/weapons/Mortar.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31.7995, 31.657 )
+extents = Vector2( 22.1612, 23.0241 )
 
 [node name="MortarNode" type="Node2D" groups=[
 "ShipNodes",
