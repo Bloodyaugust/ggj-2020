@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/classes/Weapon.gd" type="Script" id=1]
+[ext_resource path="res://sprites/rocket_rack.png" type="Texture" id=2]
+[ext_resource path="res://actors/projectiles/Rocket.tscn" type="PackedScene" id=3]
+
+[node name="RocketRack" type="Node2D"]
+z_index = 2
+z_as_relative = false
+script = ExtResource( 1 )
+clip_size = 1
+cooldown = 0.5
+projectile = ExtResource( 3 )
+reload = 5.0
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
