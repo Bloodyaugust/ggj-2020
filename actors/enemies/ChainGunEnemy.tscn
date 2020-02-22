@@ -23,10 +23,10 @@ position = Vector2( 24, 19 )
 position = Vector2( 25, -23 )
 
 [node name="ChainGunNode" parent="RootShipNode2" instance=ExtResource( 4 )]
-position = Vector2( -68, 1 )
+position = Vector2( -61.1329, 1 )
 
 [node name="ShipNode" parent="RootShipNode2" instance=ExtResource( 5 )]
-position = Vector2( 63, 3 )
+position = Vector2( 42.3987, 1.07721 )
 
 [node name="ShipNode2" parent="RootShipNode2" instance=ExtResource( 5 )]
-position = Vector2( -38, 1 )
+position = Vector2( -32.5063, 0.725311 )

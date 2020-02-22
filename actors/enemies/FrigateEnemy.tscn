@@ -28,10 +28,10 @@ team = 2
 position = Vector2( 44.1057, 1.38388 )
 
 [node name="ShipNode2" parent="RootShipNode2" instance=ExtResource( 5 )]
-position = Vector2( 17.4119, 36.8045 )
+position = Vector2( 13.8736, 31.9795 )
 
 [node name="ShipNode3" parent="RootShipNode2" instance=ExtResource( 5 )]
-position = Vector2( 16.3852, -28.9033 )
+position = Vector2( 12.5252, -26.0083 )
 
 [node name="ChainGunNode" parent="RootShipNode2" instance=ExtResource( 4 )]
 position = Vector2( -21.0888, 28.591 )
@@ -40,16 +40,16 @@ position = Vector2( -21.0888, 28.591 )
 position = Vector2( -21.6021, -28.9033 )
 
 [node name="ShipNode4" parent="RootShipNode2" instance=ExtResource( 5 )]
-position = Vector2( -1.58176, -66.3773 )
+position = Vector2( -6.40677, -53.8323 )
 
 [node name="ShipNode5" parent="RootShipNode2" instance=ExtResource( 5 )]
-position = Vector2( -3.63513, 68.1184 )
+position = Vector2( -4.9218, 56.5384 )
 
 [node name="MortarNode" parent="RootShipNode2" instance=ExtResource( 6 )]
 position = Vector2( -52.916, -2.2095 )
 
 [node name="BasicGunNode" parent="RootShipNode2" instance=ExtResource( 3 )]
-position = Vector2( -38.0291, 59.9049 )
+position = Vector2( -34.8124, 57.3316 )
 
 [node name="BasicGunNode2" parent="RootShipNode2" instance=ExtResource( 3 )]
 position = Vector2( -36.489, -59.7038 )
