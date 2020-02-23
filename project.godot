@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "BeamWeapon",
+"language": "GDScript",
+"path": "res://scripts/classes/BeamWeapon.gd"
+}, {
+"base": "Node2D",
 "class": "Circle2D",
 "language": "GDScript",
 "path": "res://scripts/classes/2DCircle.gd"
@@ -40,6 +45,7 @@ _global_script_classes=[ {
 "path": "res://scripts/classes/Weapon.gd"
 } ]
 _global_script_class_icons={
+"BeamWeapon": "",
 "Circle2D": "",
 "LevelLoader": "",
 "Projectile": "",

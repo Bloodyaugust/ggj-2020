@@ -33,5 +33,5 @@ position = Vector2( 816.114, 565.74 )
 [node name="RocketEnemy4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 801.352, 427.447 )
 
-[node name="RocketCruiser" parent="RocketEnemy4" instance=ExtResource( 6 )]
-position = Vector2( 29.057, -174.808 )
+[node name="RocketCruiser" parent="." instance=ExtResource( 6 )]
+position = Vector2( 830.409, 252.639 )
