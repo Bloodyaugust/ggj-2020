@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://sprites/background/clouds-seamless.png" type="Texture" id=1]
 [ext_resource path="res://sprites/background/starfield-back-seamless.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://behaviors/PlayerWeaponControl.tscn" type="PackedScene" id=6]
 [ext_resource path="res://actors/weapon-nodes/BasicGunNode.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/armor-nodes/LightArmorNode.tscn" type="PackedScene" id=8]
+[ext_resource path="res://actors/weapon-nodes/BasicLaserNode.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scripts/behaviors/CameraMouseTarget.gd" type="Script" id=12]
 
 [node name="Player" type="Node2D"]
@@ -15,7 +16,6 @@
 [node name="RootShipNode" parent="." groups=[
 "Player",
 ] instance=ExtResource( 5 )]
-position = Vector2( 480.867, 301.683 )
 
 [node name="PlayerMovement" parent="RootShipNode" instance=ExtResource( 4 )]
 
@@ -92,3 +92,6 @@ position = Vector2( 32.799, 30.8369 )
 
 [node name="LightArmorNode" parent="RootShipNode" instance=ExtResource( 8 )]
 position = Vector2( 33.0372, -36.0931 )
+
+[node name="BasicLaserNode" parent="RootShipNode" instance=ExtResource( 9 )]
+position = Vector2( -17.1892, 3.69247 )
