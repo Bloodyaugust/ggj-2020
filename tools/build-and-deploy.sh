@@ -27,6 +27,11 @@ echo "-----------------------------"
 godot --export "Windows Desktop" build/win/ggj-2020.exe -v
 echo "-----------------------------"
 
+echo "CHANGING FILETYPE FOR OSX"
+echo "-----------------------------"
+mv build/osx/ggj-2020.dmh build/osx/ggj-2020.zip
+echo "-----------------------------"
+
 ls -al
 ls -al build/
 ls -al build/linux/
