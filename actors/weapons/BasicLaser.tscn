@@ -8,10 +8,10 @@
 z_index = 2
 z_as_relative = false
 script = ExtResource( 3 )
-beam_damage = 1.0
-beam_range = 200.0
-cooldown_rate = 1.0
-heat_capacity = 999999.0
+beam_damage = 3.0
+beam_range = 400.0
+cooldown_rate = 2.0
+heat_capacity = 1.5
 heat_rate = 1.0
 
 [node name="Sprite" type="Sprite" parent="."]

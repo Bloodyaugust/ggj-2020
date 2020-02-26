@@ -50,6 +50,12 @@ func _physics_process(delta):
 
     if raycast.is_colliding():
       line.points[1] = line.to_local(raycast.get_collision_point())
+
+      var _collider_parent = raycast.get_collider().get_parent()
+
+      if _collider_parent.has_method("do_damage") && _collider_parent.team != team  && _collider_parent.team != 0:
+        _collider_parent.do_damage(beam_damage * delta)
+
     else:
       line.points[1] = Vector2(beam_range, 0)
 
@@ -59,7 +65,7 @@ func _physics_process(delta):
 
 func _process(delta):
   if _beam_weapon_state == BEAM_WEAPON_STATES.FIRING:
-    _current_heat += heat_rate * delta
+    _current_heat = clamp(_current_heat + heat_rate * delta, 0, heat_capacity)
     
     if _current_heat >= heat_capacity:
       _beam_weapon_state = BEAM_WEAPON_STATES.COOLDOWN
@@ -67,7 +73,8 @@ func _process(delta):
   if _beam_weapon_state == BEAM_WEAPON_STATES.COOLDOWN && _current_heat <= 0:
     _beam_weapon_state = BEAM_WEAPON_STATES.IDLE
 
-  _current_heat -= cooldown_rate * delta
+  if _beam_weapon_state == BEAM_WEAPON_STATES.COOLDOWN || _beam_weapon_state == BEAM_WEAPON_STATES.IDLE:
+    _current_heat = clamp(_current_heat - cooldown_rate * delta, 0, heat_capacity)
 
 func _ready():
   _beam_weapon_state = BEAM_WEAPON_STATES.IDLE
