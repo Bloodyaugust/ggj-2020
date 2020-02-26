@@ -12,6 +12,7 @@ export var heat_rate: float
 onready var line: Line2D = $"Line2D"
 onready var tree := get_tree()
 onready var parent: ShipNode = get_parent()
+onready var hit_particles: Particles2D = $"HitParticles"
 onready var raycast: RayCast2D = $"RayCast2D"
 onready var root_ship_node: RootShipNode = parent.root_ship_node
 onready var root := tree.get_root()
@@ -49,7 +50,10 @@ func _physics_process(delta):
     line.visible = true
 
     if raycast.is_colliding():
-      line.points[1] = line.to_local(raycast.get_collision_point())
+      var collision_point = raycast.get_collision_point()
+      line.points[1] = line.to_local(collision_point)
+      hit_particles.global_position = collision_point
+      hit_particles.emitting = true
 
       var _collider_parent = raycast.get_collider().get_parent()
 
@@ -58,10 +62,12 @@ func _physics_process(delta):
 
     else:
       line.points[1] = Vector2(beam_range, 0)
+      hit_particles.emitting = false
 
   else:
     raycast.enabled = false
     line.visible = false
+    hit_particles.emitting = false
 
 func _process(delta):
   if _beam_weapon_state == BEAM_WEAPON_STATES.FIRING:
