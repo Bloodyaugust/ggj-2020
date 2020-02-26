@@ -29,8 +29,7 @@ echo "-----------------------------"
 
 echo "CHANGING FILETYPE FOR OSX"
 echo "-----------------------------"
-mv build/osx/ggj-2020.dmg build/osx/ggj-2020.zip
-echo "-----------------------------"
+mv build/osx/ggj-2020.dmg build/osx/ggj-2020-osx-alpha.zip
 
 ls -al
 ls -al build/
